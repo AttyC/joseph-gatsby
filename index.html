@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Akronim|Vidaloka&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+
+  </head>
+
+  <body onload="displayDate()">
+    <header>
+      <div id="displayDate">The date and time is:  </div>  
+      <h1>
+        ANIMALS
+      </h1>
+    </header>
+    <main>
+      <div class="introduction">
+        <div class="intro">
+          <h2>Do you like animals?</h2>
+        </div>
+        <div  class=" main-image">
+          <img src="images/animal-animal-photography-chameleon-62289 (1).jpg" />
+          <img src="images/animal-animals-beautiful-158471 (1).jpg" />
+          <img src="images/animals-avan-beautiful-37833.jpg" />
+          <img src="images/animals-calf-elephants-66898.jpg" />
+          <img src="images/animal-bald-eagle-bird-of-prey-53581.jpg" />
+          <img src="images/animal-close-up-leopard-87403 (1).jpg" />
+
+        </div>
+      </div>
+      <section class="cards">
+        <div class="card"> 
+          <h3>FAVOURITE ANIMALS</h3>
+          <p>My favourite animals are: snow owls, jaguars, snakes, spiders and barracuda.</p>
+          <p>Do you have a favourite animal?</p>
+        </div>
+        <div class="card"> 
+          <h3>WILD AND DOMESTIC ANIMALS</h3>
+          <p>Did you know that the pets in our homes are all descendants of wild animals that still run wild today?    
+          </p>
+          <p>These include  
+            <ul>
+              <li>grey wolves / dog</li>
+              <li>bezoar / goat</li>
+              <li>mouflon / sheep</li>
+            </ul>
+          </p>
+        </div>      
+        <div class="card"> 
+          <h3>captive ANIMALS</h3>
+          <p>Some people think that zoos are bad for animals because they are enclosed and other people think that it might be good for the animals if they were abandoned or needed help breeding.</p>
+        </div>
+      </section>
+      <section>
+        <div class=video>
+          <video width="650"  controls>
+            <source src="images/Dog-in-Farm.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </main>
+    <footer>This website was designed by Joseph Cronin. &#9400;</footer>
+    <script>
+      function displayDate() {
+        let today = moment().format('[The date and time now:] DD MMM YYYY h:mm a');
+        document.getElementById("displayDate").innerHTML = today;
+      }  
+    </script>
+  </body>
+</html>

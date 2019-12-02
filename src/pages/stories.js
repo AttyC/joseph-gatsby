@@ -6,22 +6,22 @@ import styles from './blog.module.css'
 import Layout from "../components/layout"
 import ArticlePreview from '../components/article-preview'
 
-class BlogIndex extends React.Component {
+class StoryIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
+    const stories = get(this, 'props.data.allContentfulStory.edges')
 
     return (
       <Layout location={this.props.location} >
         <div style={{ background: '#fff' }}>
           <Helmet title={siteTitle} />
           <div className={styles.hero}>
-            Blog
+            Stories
           </div>
           <div className="wrapper">
-            <h2 className="section-headline">Recent articles</h2>
+            <h2 className="section-headline">Recent Stories</h2>
             <ul className="article-list">
-              {posts.map(({ node }) => {
+              {stories.map(({ node }) => {
                 return (
                   <li key={node.slug}>
                     <ArticlePreview article={node} />
@@ -36,16 +36,16 @@ class BlogIndex extends React.Component {
   }
 }
 
-export default BlogIndex
+export default StoryIndex
 
 export const pageQuery = graphql`
-  query BlogIndexQuery {
+  query StoryIndexQuery {
     site {
       siteMetadata {
         title
       }
     }
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+    allContentfulStory(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
           title

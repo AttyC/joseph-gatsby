@@ -6,29 +6,34 @@ import Hero from '../components/hero'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
 
+// const displayDate = () => {
+//   let today = moment().format('[The date and time now:] DD MMM YYYY h:mm a');
+//   document.getElementById("displayDate").innerHTML = today;
+// }  
+
 class RootIndex extends React.Component {
+
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-    const [author] = get(this, 'props.data.allContentfulPerson.edges')
+    const stories = get(this, 'props.data.allContentfulStory.edges')
+    // const [author] = get(this, 'props.data.allContentfulPerson.edges')
+    const mainArticle = get(this, 'props.data.contentfulHeroArticle')
 
     return (
       <Layout location={this.props.location} >
-        <div style={{ background: '#fff' }}>
-          <Helmet title={siteTitle} />
-          <Hero data={author.node} />
-          <div className="wrapper">
-            <h2 className="section-headline">Recent articles</h2>
-            <ul className="article-list">
-              {posts.map(({ node }) => {
-                return (
-                  <li key={node.slug}>
-                    <ArticlePreview article={node} />
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
+        <Helmet title={siteTitle} />       
+        <Hero data={mainArticle} />
+        <div className="wrapper">
+          <h2 className="section-headline">Stories</h2>
+          <ul className="article-list">
+            {stories.map(({ node }) => {
+              return (
+                <li key={node.slug}>
+                  <ArticlePreview article={node} />
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </Layout>
     )
@@ -44,13 +49,20 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+    contentfulHeroArticle {
+      title
+      mainImage {
+        fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+         ...GatsbyContentfulFluid_tracedSVG
+        }
+      }
+    }
+    allContentfulStory(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
           title
           slug
           publishDate(formatString: "MMMM Do, YYYY")
-          tags
           heroImage {
             fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
              ...GatsbyContentfulFluid_tracedSVG
