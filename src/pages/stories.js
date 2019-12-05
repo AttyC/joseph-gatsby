@@ -15,11 +15,8 @@ class StoryIndex extends React.Component {
       <Layout location={this.props.location} >
         <div style={{ background: '#fff' }}>
           <Helmet title={siteTitle} />
-          <div className={styles.hero}>
-            Stories
-          </div>
           <div className="wrapper">
-            <h2 className="section-headline">Recent Stories</h2>
+            <h2 className="section-headline">Stories</h2>
             <ul className="article-list">
               {stories.map(({ node }) => {
                 return (
